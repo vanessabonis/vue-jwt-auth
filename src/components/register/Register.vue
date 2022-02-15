@@ -4,14 +4,8 @@
 
         <!-- Nome -->
         <div class="form-group">
-            <label for="">First Name</label>
-            <input type="text" class="form-control" v-model="first_name" placeholder="First Name">
-        </div>
-
-        <!-- Sobrenome -->
-        <div class="form-group">
-            <label for="">Last Name</label>
-            <input type="text" class="form-control" v-model="last_name" placeholder="Last Name">
+            <label for="">Name</label>
+            <input type="text" class="form-control" v-model="name" placeholder="Name">
         </div>
 
         <!-- Email -->
@@ -26,12 +20,6 @@
             <input type="password" class="form-control" v-model="password" placeholder="Password">
         </div>
 
-        <!--Confirmar Senha-->
-        <div class="form-group">
-            <label for="">Confirm Password</label>
-            <input type="password" class="form-control" v-model="confirm_password" placeholder="Confirm Password">
-        </div>
-
         <button class="btn btn-primary btn-block">Sign Up</button>
     </form>
 </template>
@@ -43,25 +31,23 @@
         name: 'Register',
         data () {
             return {
-                first_name: '',
-                last_name: '',
+                name: '',
                 email: '',
-                password: '',
-                password_confirm: ''
+                password: ''
             }
         },
         methods: {
             async handleSubmit(){
                 const response = await axios.post('register', {
-                    first_name: this.first_name,
-                    last_name: this.last_name,
+                    name: this.name,
                     email: this.email,
                     password: this.password,
-                    password_confirm: this.password_confirm
+                    
 
                 });  
                 
-                console.log(response);
+                console.log(response)
+                this.$router.push('/login');
             }
         }
     }
